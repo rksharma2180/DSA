@@ -55,7 +55,7 @@ public class ArrayOperation {
 		 */
 
 		Arrays.stream(arr).forEach(element -> {
-			Optional.ofNullable(element).ifPresentOrElse(c -> System.out.print(" " + c +", "), () -> System.out.print(""));
+			Optional.ofNullable(element).ifPresent((c -> System.out.print(" " + c +", ")));  
 		});
 
 	}
