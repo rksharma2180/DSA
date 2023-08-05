@@ -21,8 +21,8 @@ public class LinkedList {
 		int input = 0;
 		print.accept("\n Selection Options \n" + "1: Create List \n" + "2: Add Element \n"
 				+ "3: Delete Element \n" + "4: Search Element \n" + "5: Add Element at the begining of the list \n"
-				+ "6: Add Element at the end of the list\n" + "7: Show Elements \n" + "8: Exit");
-		if(scanner.hasNextInt()) {
+				+ "6: Add Element at the end of the list\n" + "7: Show Elements \n" + "8: Reverse List "+ " 9: Exit");
+		if(scanner.hasNextInt()) {	
 			input = scanner.nextInt();
 		}
 		switch (input) {
@@ -46,10 +46,27 @@ public class LinkedList {
 			break;
 		case 7:
 			showElements();
-			break;	
+			break;
+		case 8:
+			reverseList();
+			break;
 		default:
 			System.exit(0);
 		}
+	}
+	
+	public static void reverseList() {
+		Node<Object> itr = currentNode;
+		while(start.next!= itr) {
+			Node<Object> firstPtr = start;
+			System.out.println(itr.data);
+			while(firstPtr.next != itr) {
+				firstPtr = firstPtr.next;
+			}
+			itr = firstPtr;			
+		}
+		print.accept(itr.data);
+		print.accept(start.data);
 	}
 
 	public static void addElements() {
@@ -109,6 +126,7 @@ public class LinkedList {
 		}
 	}
 
+	//Linear Search
 	public static void searchElement() {
 		print.accept("Please enter element value to search");
 		Object data = null;
@@ -123,7 +141,7 @@ public class LinkedList {
 		}
 	}
 
-	private static Node<Object> searchElement(Node<Object> start, Object data) {
+	public static Node<Object> searchElement(Node<Object> start, Object data) {
 		if (null != start) {
 			Node<Object> itrNode = start;
 			while (true) {
@@ -152,13 +170,13 @@ public class LinkedList {
 					break;
 				}
 				
-				if(prevNode.data.equals(data)) {
+				if (prevNode.data.equals(data)) {
 					prevNode = prevNode.next;
 					start = prevNode;
 					break;
 				}
 				
-				if (prevNode.next !=null && prevNode.next.data.equals(data)) {
+				if (prevNode.next != null && prevNode.next.data.equals(data)) {
 					nextNode = prevNode.next.next;
 					prevNode.next = nextNode;
 					break;
