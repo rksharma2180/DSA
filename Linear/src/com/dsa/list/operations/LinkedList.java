@@ -6,7 +6,6 @@ import java.util.function.Consumer;
 public class LinkedList {
 
 	static Scanner scanner = new Scanner(System.in);
-	static int index = 0;
 	static Node<Object> node;
 	static Node<Object> start;
 	static Node<Object> currentNode;
@@ -21,7 +20,8 @@ public class LinkedList {
 		int input = 0;
 		print.accept("\n Selection Options \n" + "1: Create List \n" + "2: Add Element \n"
 				+ "3: Delete Element \n" + "4: Search Element \n" + "5: Add Element at the begining of the list \n"
-				+ "6: Add Element at the end of the list\n" + "7: Show Elements \n" + "8: Reverse List "+ " 9: Exit");
+				+ "6: Add Element at the end of the list\n" + "7: Show Elements \n" + "8: Show Reverse List \n" 
+				+ "9: Reverse List \n 10: Exit");
 		if(scanner.hasNextInt()) {	
 			input = scanner.nextInt();
 		}
@@ -48,6 +48,9 @@ public class LinkedList {
 			showElements();
 			break;
 		case 8:
+			printReverseList();
+			break;
+		case 9:
 			reverseList();
 			break;
 		default:
@@ -55,7 +58,18 @@ public class LinkedList {
 		}
 	}
 	
-	public static void reverseList() {
+	private static void reverseList() {
+		Node<Object> temp2 = start;
+		while(start != currentNode) {
+			Node<Object> temp = start;
+			start = start.next;
+			temp.next = currentNode.next;
+			currentNode.next = temp;
+		}
+		currentNode = temp2;
+	}
+
+	public static void printReverseList() {
 		Node<Object> itr = currentNode;
 		while(start.next!= itr) {
 			Node<Object> firstPtr = start;

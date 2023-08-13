@@ -19,7 +19,7 @@ public class ArrayOperation {
 		int input = 0;
 		System.out.println("\n Selection Options \n" + "1: Create Array \n" + "2: Add Element \n"
 				+ "3: Delete Element at specified position \n" + "4: Delete Element \n" + "5: Search Element \n"
-				+ "6: Show Elements \n7: Exit");
+				+ "6: Show Elements \n7: Print Reverse \n8: Exit");
 		if(scanner.hasNextInt()) {
 			input = scanner.nextInt();
 		}
@@ -42,21 +42,38 @@ public class ArrayOperation {
 		case 6:
 			showElements();
 			break;
+		case 7:
+			printReverse();
+			break;
 		default:
 			System.exit(0);
 		}
 	}
 
+	private static void printReverse() {
+		for (int i = arr.length - 1; i >= 0; i--) {
+			if (arr[i] != null)
+				System.out.println(arr[i]);
+		}
+	}
+
 	private static void showElements() {
+		//Java 9
 		/*
 		 * Stream.of(arr).forEach(element -> {
 		 * Optional.ofNullable(element).ifPresentOrElse(c ->
 		 * System.out.println("Element: " + c), () -> System.out.print("")); });
 		 */
 
+		//Java 8
 		Arrays.stream(arr).forEach(element -> {
-			Optional.ofNullable(element).ifPresent((c -> System.out.print(" " + c +", ")));  
+			Optional.ofNullable(element).ifPresent((c -> System.out.print(" " + c + ", ")));
 		});
+		 
+		 
+		/*
+		 * for(Object obj: arr) { if(obj!=null) System.out.println(obj); }
+		 */
 
 	}
 
