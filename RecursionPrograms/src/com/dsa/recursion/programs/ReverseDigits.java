@@ -11,7 +11,7 @@ public class ReverseDigits {
 	}
 
 	public static void reverse(int n) {
-		if(n <10) {
+		if(n < 10) {
 			System.out.println(n);
 			return;
 		}
