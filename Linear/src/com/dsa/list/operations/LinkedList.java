@@ -148,24 +148,30 @@ public class LinkedList {
 			data = scanner.next();
 		}		
 		Node<Object> node = searchElement(start, data);
-		if(node != start) {
+		if(node!=null) {
 			print.accept("Search Element Found");
 		}else {
 			print.accept("Search Element does not exist in the list");
 		}
 	}
 
+	/*
+	 * public static Node<Object> searchElement(Node<Object> start, Object data) {
+	 * if (null != start) { Node<Object> itrNode = start; while (true) { if
+	 * (itrNode.data.equals(data)) { return itrNode; } itrNode = itrNode.next; } }
+	 * return start; }
+	 */
+	
+	//Recursive search 
 	public static Node<Object> searchElement(Node<Object> start, Object data) {
 		if (null != start) {
-			Node<Object> itrNode = start;
-			while (true) {
-				if (itrNode.data.equals(data)) {
-					return itrNode;
-				}
-				itrNode = itrNode.next;
-			}
+			if(start.data.equals(data)) {
+				return start;
+			} else 
+				return searchElement(start.next, data);
+		} else {
+			return null;
 		}
-		return start;
 	}
 
 	public static void deleteElement() {

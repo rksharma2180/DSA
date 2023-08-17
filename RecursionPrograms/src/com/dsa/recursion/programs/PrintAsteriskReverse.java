@@ -19,7 +19,7 @@ public class PrintAsteriskReverse {
 	}
 
 	private static void printnAsterisk(int n) {
-		if(n>0) {
+		if(n > 0) {
 			System.out.print("*");
 			printnAsterisk(n-1);
 		}
