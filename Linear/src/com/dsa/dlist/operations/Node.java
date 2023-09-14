@@ -14,6 +14,6 @@ public class Node<T> {
 
 	@Override
 	public String toString() {
-		return data.toString();
+		return this.data.toString();
 	}
 }
