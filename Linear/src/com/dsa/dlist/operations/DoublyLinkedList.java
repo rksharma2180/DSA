@@ -59,7 +59,20 @@ public class DoublyLinkedList {
 	}
 
 	private static void reverseList() {
-
+		Node<Integer> temp = head;
+		while(temp != currentNode) {
+			Node<Integer> ptr = temp.next;
+			temp.next = currentNode.next;
+			temp.prev = currentNode;
+			if (currentNode.next !=null) 
+				currentNode.next.prev = temp;
+			currentNode.next = temp;
+			temp.prev = currentNode;
+			temp = ptr;
+		}
+		temp = head;
+		head = currentNode;
+		currentNode = temp;
 	}
 
 	private static void printReverseList() {
